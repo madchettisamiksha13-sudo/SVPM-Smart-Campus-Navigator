@@ -1950,15 +1950,12 @@ if (voiceSpeakButton) {
 // 37. FLOATING AI ASSISTANT POPUP
 // =====================================================
 
-const assistantToggle =
-    document.getElementById("assistantToggle");
-
-const assistantPopup =
-    document.getElementById("assistantPopup");
+const assistantToggle = document.getElementById("assistantToggle");
+const assistantPopup = document.getElementById("assistantPopup");
 
 if (assistantToggle && assistantPopup) {
 
-    assistantToggle.addEventListener("click", function() {
+    function toggleAssistant() {
         const isOpening = assistantPopup.hidden;
 
         assistantPopup.hidden = !isOpening;
@@ -1968,23 +1965,21 @@ if (assistantToggle && assistantPopup) {
             String(isOpening)
         );
 
-        assistantToggle.textContent =
-            isOpening ? "✕" : "🤖";
+        assistantToggle.textContent = isOpening ? "✕" : "🤖";
 
         assistantToggle.setAttribute(
             "aria-label",
-            isOpening
-                ? "Close AI Assistant"
-                : "Open AI Assistant"
+            isOpening ? "Close AI Assistant" : "Open AI Assistant"
         );
-    });
+    }
+
+    assistantToggle.addEventListener("click", toggleAssistant);
+
+    console.log("AI Assistant toggle initialized.");
 
 } else {
-    console.warn(
-        "AI Assistant popup elements not found on this page."
-    );
+    console.warn("AI Assistant popup elements not found.");
 }
-
 
 // =====================================================
 // 38. INITIALIZATION STATUS
