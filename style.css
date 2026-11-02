@@ -1,0 +1,810 @@
+/* =========================================
+   GLOBAL STYLES
+========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f3f6fb;
+  color: #172033;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+header,
+.header {
+  padding: 28px 20px;
+  text-align: center;
+  background: #173b70;
+  color: white;
+}
+
+header h1,
+.header h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+}
+
+header p,
+.header p {
+  margin: 5px 0;
+}
+
+/* =========================================
+   MAIN LAYOUT
+========================================= */
+
+main,
+.container,
+.main-container {
+  width: min(1400px, 94%);
+  margin: 30px auto;
+  display: grid;
+  grid-template-columns: 350px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+/* =========================================
+   NAVIGATION PANEL
+========================================= */
+
+.navigation-panel,
+.panel {
+  grid-column: 1;
+  background: white;
+  padding: 22px;
+  border-radius: 12px;
+  box-shadow: 0 3px 14px #00000010;
+  min-width: 0;
+}
+
+.navigation-panel h2,
+.panel h2 {
+  margin-top: 0;
+}
+
+.navigation-panel h3,
+.panel h3 {
+  margin-top: 22px;
+  margin-bottom: 12px;
+}
+
+/* =========================================
+   LABELS
+========================================= */
+
+label {
+  display: block;
+  margin-top: 16px;
+  margin-bottom: 7px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* =========================================
+   INPUTS AND SELECT
+========================================= */
+
+select,
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 7px;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  outline: none;
+}
+
+select,
+input[type="text"] {
+  border: 1px solid #cbd5e1;
+  background: white;
+  color: #172033;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+select:focus,
+input[type="text"]:focus {
+  border-color: #1765c0;
+  box-shadow: 0 0 0 3px #1765c01a;
+}
+
+select:disabled {
+  background: #f1f5f9;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 18px;
+  border: none;
+  border-radius: 7px;
+  background: #1765c0;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.15s;
+}
+
+button:hover {
+  background: #104d96;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+.primary-button {
+  background: #1765c0;
+}
+
+.primary-button:hover {
+  background: #104d96;
+}
+
+/* =========================================
+   DESTINATION SEARCH
+========================================= */
+
+#destinationSearch {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  background: white;
+  color: #172033;
+  font-size: 14px;
+  outline: none;
+}
+
+#destinationSearch::placeholder {
+  color: #94a3b8;
+}
+
+#destinationSearch:focus {
+  border-color: #1765c0;
+  box-shadow: 0 0 0 3px #1765c01a;
+}
+
+.search-results {
+  width: 100%;
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.search-result-item {
+  width: 100%;
+  margin: 0;
+  padding: 11px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 7px;
+  background: #f8fafc;
+  color: #172033;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.search-result-item:hover {
+  background: #eaf2ff;
+  border-color: #1765c0;
+  color: #104d96;
+  transform: none;
+}
+
+.search-results p {
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 7px;
+  background: #f8fafc;
+  color: #64748b;
+  font-size: 13px;
+}
+
+/* =========================================
+   CURRENT LOCATION
+========================================= */
+
+#setLocationMode {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  background: #1765c0;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+#setLocationMode:hover {
+  background: #104d96;
+}
+
+#locationStatus {
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-top: 8px;
+}
+
+.status-text {
+  min-height: 18px;
+}
+
+/* =========================================
+   DIVIDER
+========================================= */
+
+hr {
+  border: 0;
+  border-top: 1px solid #e2e8f0;
+  margin: 20px 0;
+}
+
+/* =========================================
+   NAVIGATION CONTROLS
+========================================= */
+
+.secondary-button {
+  background: #475569;
+}
+
+.secondary-button:hover {
+  background: #334155;
+}
+
+.reset-button {
+  background: #dc2626;
+}
+
+.reset-button:hover {
+  background: #b91c1c;
+}
+
+.control-note {
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.5;
+  margin-top: 10px;
+}
+
+/* =========================================
+   3D MAP PANEL
+========================================= */
+
+#navigation3DSection,
+.map-panel {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  margin: 0;
+  padding: 22px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 3px 14px #00000010;
+}
+
+#navigation3DSection h2,
+.map-panel h2 {
+  margin-top: 0;
+}
+
+#activeFloorName {
+  color: #475569;
+  font-weight: bold;
+  margin-bottom: 14px;
+}
+
+/* =========================================
+   3D VIEWER
+========================================= */
+
+#navigation3DViewer {
+  width: 100%;
+  height: 620px;
+  min-height: 450px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #edf2f8;
+}
+
+#navigation3DViewer canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* =========================================
+   MAP LEGEND
+========================================= */
+
+.map-legend {
+  margin-top: 20px;
+  padding: 16px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+}
+
+.map-legend h3 {
+  margin: 0 0 14px;
+  font-size: 16px;
+}
+
+.legend-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #334155;
+}
+
+.legend-dot {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  min-width: 13px;
+  border-radius: 50%;
+}
+
+.start-dot {
+  background: #16a34a;
+}
+
+.destination-dot {
+  background: #dc2626;
+}
+
+.current-dot {
+  background: #2563eb;
+}
+
+.legend-line {
+  width: 25px;
+  min-width: 25px;
+  height: 4px;
+  border-radius: 5px;
+  background: #2563eb;
+}
+
+.legend-arrow {
+  width: 25px;
+  min-width: 25px;
+  color: #1d4ed8;
+  font-size: 23px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+/* =========================================
+   DIRECTIONS
+========================================= */
+
+#directions {
+  margin-top: 18px;
+  line-height: 1.6;
+}
+
+#directions button {
+  max-width: 250px;
+}
+
+#message {
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+/* =========================================
+   OTHER MAP ELEMENTS
+========================================= */
+
+#map {
+  width: 100%;
+  min-height: 350px;
+  margin-top: 15px;
+  overflow: auto;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+#floorMapImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+#mapFloor {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+}
+
+.note {
+  color: #64748b;
+  font-size: 13px;
+}
+
+/* =========================================
+   TABLET RESPONSIVE
+========================================= */
+
+@media (max-width: 850px) {
+
+  main,
+  .container,
+  .main-container {
+    grid-template-columns: 1fr;
+    width: 94%;
+  }
+
+  .navigation-panel,
+  .panel,
+  #navigation3DSection,
+  .map-panel {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  #navigation3DViewer {
+    height: 480px;
+    min-height: 350px;
+  }
+}
+
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+
+@media (max-width: 480px) {
+
+  header h1,
+  .header h1 {
+    font-size: 22px;
+  }
+
+  .navigation-panel,
+  #navigation3DSection {
+    padding: 16px;
+  }
+
+  #navigation3DViewer {
+    height: 400px;
+    min-height: 300px;
+  }
+
+  .legend-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .search-result-item {
+    padding: 12px;
+  }
+}
+
+/* =========================================
+   FLOATING AI ASSISTANT BUTTON
+========================================= */
+
+.assistant-floating-button {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    width: 62px;
+    height: 62px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: 50%;
+    background: #2457d6;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    z-index: 10000;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.assistant-floating-button:hover {
+    background: #173fa8;
+    transform: scale(1.06);
+}
+
+.assistant-floating-button:active {
+    transform: scale(0.96);
+}
+
+
+/* =========================================
+   AI ASSISTANT POPUP
+========================================= */
+
+.assistant-popup {
+    position: fixed;
+    right: 22px;
+    bottom: 96px;
+    width: 370px;
+    max-width: calc(100vw - 32px);
+    max-height: 75vh;
+    overflow-y: auto;
+    padding: 0;
+    background: white;
+    border: 1px solid #dbe3f0;
+    border-radius: 14px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.22);
+    z-index: 9999;
+}
+
+.assistant-popup[hidden] {
+    display: none !important;
+}
+
+
+/* =========================================
+   AI ASSISTANT CONTENT
+========================================= */
+
+.ai-assistant {
+    width: 100%;
+    padding: 17px;
+    margin: 0;
+    background: #f1f5ff;
+    border: none;
+    border-radius: 14px;
+}
+
+.ai-assistant h3 {
+    margin: 0 0 10px;
+    color: #173b70;
+    font-size: 19px;
+}
+
+.ai-assistant p {
+    line-height: 1.5;
+}
+
+.ai-assistant > p:first-of-type {
+    font-size: 13px;
+    color: #475569;
+}
+
+
+/* =========================================
+   ASSISTANT INPUT ROW
+========================================= */
+
+.ai-assistant .assistant-input-row {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 7px;
+    width: 100%;
+}
+
+.ai-assistant .assistant-input-row input#assistantInput {
+    display: block;
+    flex: 1 1 0;
+    width: 0;
+    min-width: 0;
+    height: 44px;
+    padding: 10px;
+    margin: 0;
+    border: 1px solid #aaa;
+    border-radius: 7px;
+    background: white;
+    color: #111;
+    font-size: 13px;
+    pointer-events: auto;
+    position: relative;
+    z-index: 2;
+}
+
+#assistantInput::placeholder {
+    color: #777;
+}
+
+#assistantInput:focus {
+    border-color: #2457d6;
+    outline: none;
+    box-shadow: 0 0 0 2px #2457d625;
+}
+
+
+/* =========================================
+   ASSISTANT BUTTONS
+========================================= */
+
+.ai-assistant .assistant-input-row button {
+    width: auto;
+    height: 44px;
+    padding: 8px 12px;
+    margin: 0;
+    border: none;
+    border-radius: 7px;
+    background: #2457d6;
+    color: white;
+    font-size: 13px;
+    cursor: pointer;
+    flex: 0 0 auto;
+}
+
+.ai-assistant .assistant-input-row button:hover {
+    background: #173fa8;
+}
+
+#assistantMic {
+    width: 44px !important;
+    min-width: 44px;
+    padding: 8px !important;
+    background: #263f75 !important;
+    font-size: 18px !important;
+}
+
+#assistantSpeak {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    background: #e5eaf8;
+    color: #172b55;
+    border: 1px solid #bdc9e8;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+#assistantSpeak:hover {
+    background: #d5def5;
+}
+
+
+/* =========================================
+   ASSISTANT RESPONSE
+========================================= */
+
+.assistant-response {
+    margin: 12px 0 0;
+    padding: 12px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    color: #172033;
+    font-size: 13px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================
+   MOBILE POPUP
+========================================= */
+
+@media (max-width: 480px) {
+
+    .assistant-floating-button {
+        right: 16px;
+        bottom: 16px;
+        width: 58px;
+        height: 58px;
+        font-size: 25px;
+    }
+
+    .assistant-popup {
+        right: 12px;
+        bottom: 86px;
+        width: calc(100vw - 24px);
+        max-width: none;
+        max-height: 72vh;
+    }
+
+    .ai-assistant {
+        padding: 14px;
+    }
+
+    .ai-assistant .assistant-input-row {
+        gap: 5px;
+    }
+
+    .ai-assistant .assistant-input-row input#assistantInput {
+        font-size: 12px;
+    }
+
+}
+/* =========================================
+   V1 CAMPUS NAVIGATION
+========================================= */
+
+.campus-navigation-section {
+    width: min(1400px, 94%);
+    margin: 25px auto;
+    padding: 24px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 14px #00000010;
+}
+
+.campus-navigation-section h2 {
+    margin-top: 0;
+    color: #173b70;
+}
+
+.campus-navigation-section p {
+    line-height: 1.5;
+    color: #475569;
+}
+
+.campus-navigation-section select {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.campus-action-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.campus-action-buttons button {
+    margin-top: 8px;
+}
+
+#campusDetails {
+    margin-top: 15px;
+    padding: 16px;
+    background: #f8fafc;
+    border: 1px solid #d8deeb;
+    border-radius: 9px;
+    line-height: 1.6;
+}
+
+#campusDetails[hidden] {
+    display: none !important;
+}
+
+#openDiplomaNavigation {
+    background: #e58b27;
+}
+
+#openDiplomaNavigation:hover {
+    background: #c97516;
+}
+
+@media (max-width: 600px) {
+    .campus-action-buttons {
+        grid-template-columns: 1fr;
+    }
+
+    .campus-navigation-section {
+        padding: 17px;
+    }
+}

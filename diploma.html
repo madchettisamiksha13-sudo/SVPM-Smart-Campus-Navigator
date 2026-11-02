@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SVPM Diploma Building - Indoor Navigation</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:,">
+</head>
+
+<body class="diploma-page">
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <h1>SVPM Diploma Building Navigation</h1>
+
+        <p>Smart 3D Indoor Navigation System</p>
+
+    </header>
+
+
+    <!-- HIDDEN CAMPUS SECTION
+         Kept in DOM because shared script.js uses
+         V1 campus navigation element IDs. -->
+
+    <section class="campus-navigation-section" hidden>
+
+        <h2>SVPM Campus Navigation</h2>
+
+        <label for="campusLocation">Select Your Destination</label>
+
+        <select id="campusLocation">
+            <option value="">-- Select Location --</option>
+            <option value="Main Gate">Main Gate</option>
+            <option value="Ground">Ground</option>
+            <option value="Auditorium">Auditorium</option>
+            <option value="Girls Hostel">Girls Hostel</option>
+            <option value="Pharmacy">Pharmacy</option>
+            <option value="Diploma">Diploma</option>
+            <option value="Canteen">Canteen</option>
+            <option value="Lawn">Lawn</option>
+            <option value="Engineering Building A">Engineering Building A</option>
+            <option value="Engineering Building B">Engineering Building B</option>
+            <option value="Boys Hostel">Boys Hostel</option>
+            <option value="Play Ground">Play Ground</option>
+            <option value="SVPM Commerce College">SVPM Commerce College</option>
+        </select>
+
+        <p id="campusMessage"></p>
+
+        <button type="button" id="campusDetailsButton">
+            Show Details
+        </button>
+
+        <button type="button" id="campusMapButton">
+            Open Google Maps
+        </button>
+
+        <button type="button" id="campusDirectionsButton">
+            Get Directions
+        </button>
+
+        <section id="campusDetails" hidden></section>
+
+        <button type="button" id="openDiplomaNavigation">
+            Open Diploma Building Navigation
+        </button>
+
+    </section>
+
+
+    <!-- MAIN INDOOR NAVIGATION -->
+
+    <main class="main-container">
+
+
+        <!-- NAVIGATION PANEL -->
+<section class="navigation-panel">
+
+    <h2>Indoor Navigation</h2>
+
+    <label for="navigationMode">Navigation Mode</label>
+    <select id="navigationMode">
+        <option value="manual">Manual Room Selection</option>
+        <option value="current">Use My Current Location</option>
+    </select>
+
+    <!-- INTERNAL FLOOR SELECTORS
+         Hidden from users; JavaScript still uses them. -->
+    <select id="startFloor" hidden>
+        <option value="">Select Starting Floor</option>
+        <option value="ground">Ground Floor</option>
+        <option value="first">First Floor</option>
+        <option value="second">Second Floor</option>
+    </select>
+
+    <select id="destinationFloor" hidden>
+        <option value="">Select Destination Floor</option>
+        <option value="ground">Ground Floor</option>
+        <option value="first">First Floor</option>
+        <option value="second">Second Floor</option>
+    </select>
+
+    <!-- STARTING POINT -->
+    <label for="start">Starting Point</label>
+    <select id="start">
+        <option value="">-- Select Starting Point --</option>
+    </select>
+
+    <button
+        type="button"
+        id="setLocationMode"
+        class="primary-button">
+        Set My Current Location
+    </button>
+
+    <p id="locationStatus" class="status-text">
+        Select a navigation mode.
+    </p>
+
+    <hr>
+
+    <!-- DESTINATION SEARCH -->
+    <h3>Find a Room</h3>
+
+    <label for="destinationSearch">
+        Search Room by Name or Number
+    </label>
+
+    <input
+        type="text"
+        id="destinationSearch"
+        placeholder="Example: AI Lab 1, 118, Library..."
+        autocomplete="off"
+    >
+
+    <div
+        id="destinationSearchResults"
+        class="search-results">
+    </div>
+
+    <!-- DESTINATION -->
+    <label for="destination">Destination</label>
+    <select id="destination">
+        <option value="">-- Select Destination --</option>
+    </select>
+
+    <button
+        type="button"
+        id="findRoute"
+        class="primary-button">
+        Find Route
+    </button>
+
+    <p id="message" class="message"></p>
+
+    <hr>
+
+    <!-- NAVIGATION CONTROLS -->
+    <h3>Navigation Controls</h3>
+
+    <button
+        type="button"
+        id="clearRoute"
+        class="secondary-button">
+        Clear Route
+    </button>
+
+    <button
+        type="button"
+        id="resetNavigation"
+        class="reset-button">
+        Reset Navigation
+    </button>
+
+    <p class="control-note">
+        Clear Route removes the displayed route.
+        Reset Navigation restarts the navigation system.
+    </p>
+
+</section>
+
+
+        <!-- 3D MAP PANEL -->
+
+        <section
+            id="navigation3DSection"
+            class="map-panel"
+            style="display: none;">
+
+            <h2>3D Campus Map</h2>
+
+            <h3 id="activeFloorName">
+                First Floor
+            </h3>
+
+
+            <div
+                id="navigation3DViewer"
+                class="navigation-3d-viewer">
+            </div>
+
+
+            <!-- MAP LEGEND -->
+
+            <div class="map-legend">
+
+                <h3>Map Legend</h3>
+
+                <div class="legend-grid">
+
+
+                    <div class="legend-item">
+
+                        <span class="legend-dot start-dot"></span>
+
+                        <span>Starting Point</span>
+
+                    </div>
+
+
+                    <div class="legend-item">
+
+                        <span class="legend-dot destination-dot"></span>
+
+                        <span>Destination</span>
+
+                    </div>
+
+
+                    <div class="legend-item">
+
+                        <span class="legend-line"></span>
+
+                        <span>Navigation Route</span>
+
+                    </div>
+
+
+                    <div class="legend-item">
+
+                        <span class="legend-arrow">➜</span>
+
+                        <span>Direction of Movement</span>
+
+                    </div>
+
+
+                    <div class="legend-item">
+
+                        <span class="legend-dot current-dot"></span>
+
+                        <span>Your Selected Location</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- DIRECTIONS -->
+
+            <div
+                id="directions"
+                class="directions">
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FLOATING AI ASSISTANT BUTTON -->
+
+    <button
+        id="assistantToggle"
+        class="assistant-floating-button"
+        type="button"
+        aria-label="Open AI Assistant"
+        aria-expanded="false"
+        aria-controls="assistantPopup">
+
+        🤖
+
+    </button>
+
+
+    <!-- AI ASSISTANT POPUP -->
+
+    <div
+        id="assistantPopup"
+        class="assistant-popup"
+        role="dialog"
+        aria-label="AI Campus Assistant"
+        hidden>
+
+
+        <div class="ai-assistant">
+
+            <h3>🤖 AI Campus Assistant</h3>
+
+
+            <p>
+                Ask me where a campus location, room, lab
+                or office is located.
+            </p>
+
+
+            <!-- TEXT AND VOICE INPUT -->
+
+            <div class="assistant-input-row">
+
+                <input
+                    type="text"
+                    id="assistantInput"
+                    placeholder="Example: Take me to Chemistry Lab"
+                    autocomplete="off"
+                >
+
+
+                <button
+                    type="button"
+                    id="assistantMic"
+                    aria-label="Voice input">
+
+                    🎤
+
+                </button>
+
+
+                <button
+                    type="button"
+                    id="assistantSend">
+
+                    Ask
+
+                </button>
+
+            </div>
+
+
+            <!-- SPEAK RESPONSE -->
+
+            <button
+                type="button"
+                id="assistantSpeak">
+
+                🔊 Speak Response
+
+            </button>
+
+
+            <!-- ASSISTANT RESPONSE -->
+
+            <p
+                id="assistantResponse"
+                class="assistant-response"
+                aria-live="polite">
+
+                Hello! How can I help you navigate SVPM Campus?
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT FILES -->
+
+    <script src="floor-data.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+    <script src="first-floor-3d.js"></script>
+
+    <script src="ground-floor-3d.js"></script>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

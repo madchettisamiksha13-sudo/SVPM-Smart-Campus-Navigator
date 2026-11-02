@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SVPM Campus Navigator V3</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:,">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header class="header">
+        <h1>SVPM Campus Navigator</h1>
+        <p>Smart 3D Indoor Navigation System</p>
+    </header>
+
+    <!-- V1: CAMPUS-WIDE NAVIGATION -->
+
+<section class="campus-navigation-section">
+
+    <h2>SVPM Campus Navigation</h2>
+    <p>Select a campus destination to view its details or get directions.</p>
+
+    <label for="campusLocation">Select Your Destination</label>
+
+    <select id="campusLocation">
+        <option value="">-- Select Location --</option>
+        <option value="Main Gate">Main Gate</option>
+        <option value="Ground">Ground</option>
+        <option value="Auditorium">Auditorium</option>
+        <option value="Girls Hostel">Girls Hostel</option>
+        <option value="Pharmacy">Pharmacy</option>
+        <option value="Diploma">Diploma</option>
+        <option value="Canteen">Canteen</option>
+        <option value="Lawn">Lawn</option>
+        <option value="Engineering Building A">Engineering Building A</option>
+        <option value="Engineering Building B">Engineering Building B</option>
+        <option value="Boys Hostel">Boys Hostel</option>
+        <option value="Play Ground">Play Ground</option>
+        <option value="SVPM Commerce College">SVPM Commerce College</option>
+    </select>
+
+    <p id="campusMessage" role="status" aria-live="polite"></p>
+
+    <div class="campus-action-buttons">
+        <button type="button" id="campusDetailsButton">
+            Show Details
+        </button>
+
+        <button type="button" id="campusMapButton">
+            Open Google Maps
+        </button>
+
+        <button type="button" id="campusDirectionsButton">
+            Get Directions
+        </button>
+    </div>
+
+    <section id="campusDetails" hidden aria-live="polite"></section>
+
+    <hr>
+    <hr>
+
+<h3>Diploma Building</h3>
+
+<p>
+    Navigate inside the Diploma Building using
+    our 3D Indoor Navigation System.
+</p>
+
+<button
+    type="button"
+    id="openDiplomaNavigation">
+    Open Diploma Building Navigation
+</button>
+
+    
+</section>
+
+
+    <!-- MAIN NAVIGATION -->
+
+   
+
+    <!-- FLOATING AI ASSISTANT BUTTON -->
+
+    <button
+        id="assistantToggle"
+        class="assistant-floating-button"
+        type="button"
+        aria-label="Open AI Assistant"
+        aria-expanded="false"
+        aria-controls="assistantPopup">
+        🤖
+    </button>
+
+
+    <!-- AI ASSISTANT POPUP -->
+
+    <div
+        id="assistantPopup"
+        class="assistant-popup"
+        role="dialog"
+        aria-label="AI Campus Assistant"
+        hidden>
+
+        <div class="ai-assistant">
+
+            <h3>🤖 AI Campus Assistant</h3>
+
+            <p>
+                Ask me where a room, lab or office is located.
+            </p>
+
+
+            <div class="assistant-input-row">
+
+                <input
+                    type="text"
+                    id="assistantInput"
+                    placeholder="Example: Take me to AI Lab 1"
+                    autocomplete="off"
+                >
+
+                <button
+                    type="button"
+                    id="assistantMic"
+                    aria-label="Voice input">
+                    🎤
+                </button>
+
+                <button
+                    type="button"
+                    id="assistantSend">
+                    Ask
+                </button>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="assistantSpeak">
+                🔊 Speak Response
+            </button>
+
+
+            <p
+                id="assistantResponse"
+                class="assistant-response"
+                aria-live="polite">
+                Hello! How can I help you navigate the campus?
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT FILES -->
+
+    <script src="floor-data.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+    <script src="first-floor-3d.js"></script>
+
+    <script src="ground-floor-3d.js"></script>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
